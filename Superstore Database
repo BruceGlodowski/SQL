@@ -1,25 +1,48 @@
+In this query I used this to figure out colums in the table 
+
 SELECT *
 FROM superstore;
+
+For this query used this to limit the rows to 5
+
+SELECT *
+FROM superstore
+LIMIT 5;
+
+This query I just wanted the item name and price to be displayed in decending order
 
 SELECT item_name, price
 FROM superstore
 ORDER BY price DESC;
 
+Wanted the total cost of all products from the table "superstore"
+
 SELECT SUM(price)
 FROM superstore;
+
+Wanted the average cost of all products from the table "superstore"
 
 SELECT AVG(price)
 FROM superstore;
 
+Wanted to figure out the lowest cost item from the table "superstore"
+
 SELECT MIN(price)
 FROM superstore;
+
+Wanted to know the highest priced item from the table "superstore"
 
 SELECT MAX(price)
 FROM superstore;
 
+Wanted to find the name and stock quantity COUNT but it wasnsn't working so this is how I found out the item name and stock 
+quantity in decending order
+
 SELECT item_name, stock_quantity
 FROM superstore
 ORDER BY stock_quantity DESC;
+
+In this query I wanted the name and price from only category labeled, "Kitchen Supplies"
 
 SELECT item_name, category, price
 FROM superstore
