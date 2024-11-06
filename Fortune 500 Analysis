@@ -1,0 +1,46 @@
+SELECT *
+FROM fortune_companies
+ORDER BY industry ASC;
+
+-- In this query I wanted to figure out what companies have, provide healthcare_benefits
+
+SELECT *
+FROM fortune_companies
+WHERE healthcare_benefits=1
+ORDER BY company_name ASC;
+
+-- In this query wanted to know how long the employees average employee tenture
+
+SELECT * 
+FROM fortune_companies
+WHERE avg_employee_tenure>=5
+AND healthcare_benefits=1
+ORDER BY avg_employee_tenure DESC;
+
+-- Adding maternity leave in this query and days off are greater than 14
+
+SELECT company_name, industry, revenue, paid_time_off_days, maternity_leave_weeks
+FROM fortune_companies
+WHERE paid_time_off_days>=14
+AND healthcare_benefits=1
+AND maternity_leave_weeks>=12
+ORDER BY company_name ASC;
+
+--Assign all the companies in the Healthcare industry as "mother friendly workplace", "acceptable", or "abysmal" based on the maternity leave offered.
+
+SELECT
+company_name,
+CASE 
+  WHEN maternity_leave_weeks >= 10 THEN 'mother friendly workplace'
+  WHEN maternity_leave_weeks >= 8 THEN 'acceptable'
+  ELSE 'abysmal'
+END as mother_friendliness
+FROM fortune_companies
+WHERE industry='Healthcare'
+
+--Which industries have an average revenue of at least $200 Billion, and what are their avg revenues?
+
+SELECT industry, ROUND(AVG(revenue),1) AS avg_revenue_billions
+FROM fortune_companies
+GROUP BY industry
+HAVING avg_revenue_billions>=200
